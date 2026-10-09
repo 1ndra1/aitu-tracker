@@ -53,20 +53,21 @@ header {
 
 .brand { display: flex; align-items: center; gap: 12px; }
 
-/* белая подложка под лого, чтобы его было видно и на тёмной теме */
-.logo-box {
-  width: 44px;
-  height: 44px;
-  background: #ffffff;
-  border-radius: 10px;
-  border: 1px solid var(--border);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-.logo-box img { height: 36px; }
+/* логотип: в светлой теме - светлая версия, в тёмной - тёмная */
+.logo { height: 48px; width: auto; max-width: 100%; }
+.logo-dark { display: none; }
+:root[data-theme="dark"] .logo-light { display: none; }
+:root[data-theme="dark"] .logo-dark { display: block; }
 
-.brand h1 { font-size: 1.2rem; color: var(--main); }
+/* заголовок h1 нужен для доступности, но на экране не виден (название уже в логотипе) */
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
 
 .header-actions { display: flex; align-items: center; gap: 10px; }
 #authContainer { display: flex; align-items: center; gap: 8px; }
